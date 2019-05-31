@@ -5,6 +5,7 @@ import {
 import {Actions} from 'react-native-router-flux';
 import styles, {screenHeight, screenWidth} from "../../style"
 import * as Constant from "../../style/constant"
+import LottieView from 'lottie-react-native';
 
 export default class WelcomePage extends Component {
   constructor(props) {
@@ -34,6 +35,12 @@ export default class WelcomePage extends Component {
     }).start();
   }
 
+  componentWillUnmount() {
+    if (this.refs.lottieView) {
+        this.refs.lottieView.reset();
+    }
+  }
+
   toNext(res) {
     setTimeout(() => {
         if (res && res.result) {
@@ -46,9 +53,25 @@ export default class WelcomePage extends Component {
 
   render() {
     return <View style={[styles.mainBox, {backgroundColor: Constant.white}]}>
-      <View style={[styles.centered, {flex: 1}]}>
-        <Text style={{color: 'red'}}>23</Text>
-      </View>
-    </View>
+                <StatusBar hidden={true}/>
+                <View style={[styles.centered, {flex: 1}]}>
+                    <Image source={require("../../img/welcome.png")}
+                          resizeMode={"contain"}
+                          style={{width: screenWidth, height: screenHeight}}/>
+                    <View style={[styles.absoluteFull, styles.centered, {justifyContent: "flex-end"}]}>
+                        <View style={[styles.centered, {width: 150, height:150}]}>
+                            <LottieView
+                                ref="lottieView"
+                                style={{
+                                    width: 150,
+                                    height: 150,
+                                }}
+                                source={require('../../style/lottie/animation-line.json')}
+                                progress={this.state.progress}
+                            />
+                        </View>
+                    </View>
+                </View>
+            </View>
   }
 }

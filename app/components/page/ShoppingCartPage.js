@@ -3,11 +3,11 @@ import {
   View, Text
 } from 'react-native';
 
-// 我的
-export default class MyPage extends Component {
+// 购物车
+export default class ShoppingCartPage extends Component {
   render() {
     return <View>
-      <Text>MyPage</Text>
-    </View>
+    <Text>ShoppingCartPage</Text>
+  </View>
   }
 }

@@ -5,8 +5,10 @@ import {
     Lightbox, Drawer
 } from 'react-native-router-flux';
 import WelcomePage from '../components/page/WelcomePage'
-import MyPage from '../components/page/MyPage'
 import HomePage from '../components/page/HomePage'
+import CategoryPage from '../components/page/CategoryPage'
+import ShoppingCartPage from '../components/page/HomePage'
+import MyPage from '../components/page/MyPage'
 import TabIcon from '../components/widget/TabIcon'
 import styles from '../style'
 import * as Constant from "../style/constant"
@@ -33,7 +35,7 @@ const getRouter = () => {
                          wrap={false}
                          showLabel={false}
                          tabBarPosition={"bottom"}
-                         title={'appName'}
+                         title={'标题'}
                          tabBarStyle={{
                              height: Constant.tabBarHeight,
                              alignItems: 'center',
@@ -41,19 +43,34 @@ const getRouter = () => {
                              backgroundColor: Constant.tabBackgroundColor
                          }}>
                       <Scene
-                          key="MyPage"
-                          component={MyPage}
-                          icon={TabIcon}
-                          title={'MyPage'}
-                          tabIconName={'tabMy'}
-                      />
-                      <Scene
                           key="HomePage"
                           component={HomePage}
                           icon={TabIcon}
-                          title={'HomePage'}
+                          title={'首页'}
                           tabIconName={'tabHome'}
                       />
+                      <Scene
+                          key="CategoryPage"
+                          component={CategoryPage}
+                          icon={TabIcon}
+                          title={'分类'}
+                          tabIconName={'tabCategory'}
+                      />
+                      <Scene
+                          key="ShoppingCartPage"
+                          component={ShoppingCartPage}
+                          icon={TabIcon}
+                          title={'购物车'}
+                          tabIconName={'tabShoppingCart'}
+                      />
+                      <Scene
+                          key="MyPage"
+                          component={MyPage}
+                          icon={TabIcon}
+                          title={'我的'}
+                          tabIconName={'tabMy'}
+                      />
+                      
                   </Scene>
               </Scene>
           </Lightbox>

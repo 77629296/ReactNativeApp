@@ -22,8 +22,8 @@ import Icon from 'react-native-vector-icons/Feather'
 
 const config = {
     ["tabHome"]: 'home',
-    ["tabList"]: 'list',
-    ["tabCart"]: 'shopping-cart',
+    ["tabCategory"]: 'list',
+    ["tabShoppingCart"]: 'shopping-cart',
     ["tabMy"]: 'user',
 };
 
