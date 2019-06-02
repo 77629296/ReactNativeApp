@@ -2,6 +2,10 @@ apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
 
+//获取当前时间
+def getCurrentTime() {
+    return new Date().format("yyyy-MM-dd HH:mm:ss")
+}
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -116,10 +120,28 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+    signingConfigs {
+        debug {
+                storeFile file("../keystores/keys.jks")
+                storePassword "lisipeng"
+                keyAlias "debug"
+                keyPassword "lisipeng"
+            }
+        release {
+            storeFile file("../keystores/keys.jks")
+            storePassword "lisipeng"
+            keyAlias "debug"
+            keyPassword "lisipeng"
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -132,6 +154,13 @@ android {
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            }
+        }
+        variant.outputs.all {output ->
+            if (variant.buildType.name == "debug") {
+                output.outputFileName = "rnapp_v${android.defaultConfig.versionName}_debug_${getCurrentTime()}.apk"
+            } else if (variant.buildType.name == "release") {
+                output.outputFileName = "rnapp_v${android.defaultConfig.versionName}_release_${getCurrentTime()}.apk"
             }
         }
     }
