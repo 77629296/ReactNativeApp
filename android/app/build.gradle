@@ -123,14 +123,14 @@ android {
     signingConfigs {
         debug {
                 storeFile file("../keystores/keys.jks")
-                storePassword "lisipeng"
-                keyAlias "debug"
-                keyPassword "lisipeng"
+                storePassword "lisen123"
+                keyAlias "debug_keys"
+                keyPassword "lisen123"
             }
         release {
             storeFile file("../keystores/keys.jks")
             storePassword "lisipeng"
-            keyAlias "debug"
+            keyAlias "release"
             keyPassword "lisipeng"
         }
     }
