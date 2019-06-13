@@ -6,7 +6,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <View>
-        <Text>HomePage1</Text>
+        <Text>HomePage</Text>
       </View>
     )
   }
